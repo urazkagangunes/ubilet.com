@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentWindow">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="136dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/bilgiAl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="26dp"
+                android:background="#F35A5A"
+                android:gravity="center"
+                android:text="bilgiAl"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:autoSizeMinTextSize="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/IletisimBilgileri"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/IletisimBilgileri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="İletişim Bilgileri"
+                app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#27952C"
+                android:text="Ödemeyi Gerçekleştir"
+                android:textColor="#FAF7F7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/emailAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="23dp"
+                android:ems="10"
+                android:hint="urazzz@example.com"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@+id/yolcuBilgileri"
+                app:layout_constraintEnd_toEndOf="@+id/editTextPhone" />
+
+            <TextView
+                android:id="@+id/yolcuBilgileri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="17dp"
+                android:text="Yolcu Bilgileri"
+                app:layout_constraintBottom_toTopOf="@+id/personName"
+                app:layout_constraintEnd_toEndOf="@+id/personName" />
+
+            <EditText
+                android:id="@+id/personName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="22dp"
+                android:ems="10"
+                android:hint="İsim Soyisim"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/kimlikNumarasi"
+                app:layout_constraintStart_toStartOf="@+id/kimlikNumarasi" />
+
+            <EditText
+                android:id="@+id/kimlikNumarasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="31dp"
+                android:ems="10"
+                android:hint="Kimlik Numarasi"
+                android:inputType="number"
+                app:layout_constraintBottom_toTopOf="@+id/kartBilgileri"
+                app:layout_constraintEnd_toEndOf="@+id/emailAddress"
+                app:layout_constraintStart_toStartOf="@+id/emailAddress" />
+
+            <TextView
+                android:id="@+id/kartBilgileri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Kart Bilgileri"
+                app:layout_constraintBottom_toTopOf="@+id/kartNumarasi"
+                app:layout_constraintEnd_toEndOf="@+id/kimlikNumarasi" />
+
+            <TextView
+                android:id="@+id/kartNumarasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="49dp"
+                android:layout_marginBottom="230dp"
+                android:text="Kart Numarası"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/inputCardInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ems="10"
+                android:hint="**** **** **** ****"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="@+id/kartNumarasi"
+                app:layout_constraintTop_toBottomOf="@+id/kartNumarasi" />
+
+            <TextView
+                android:id="@+id/cardSkt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="SKT"
+                app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+                app:layout_constraintStart_toStartOf="@+id/editTextDate" />
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="3dp"
+                android:ems="10"
+                android:hint="AA/YY"
+                android:inputType="date"
+                app:layout_constraintBottom_toBottomOf="@+id/cvc"
+                app:layout_constraintEnd_toStartOf="@+id/button3"
+                app:layout_constraintStart_toStartOf="@+id/inputCardInfo"
+                app:layout_constraintTop_toTopOf="@+id/cvc" />
+
+            <EditText
+                android:id="@+id/cvc"
+                android:layout_width="107dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="63dp"
+                android:ems="10"
+                android:hint="***"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputCardInfo" />
+
+            <TextView
+                android:id="@+id/cvcInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="CVC"
+                app:layout_constraintBottom_toTopOf="@+id/cvc"
+                app:layout_constraintEnd_toEndOf="@+id/inputCardInfo"
+                app:layout_constraintStart_toEndOf="@+id/inputCardInfo" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="(530) 082 6774"
+                android:inputType="phone"
+                app:layout_constraintBottom_toTopOf="@+id/emailAddress"
+                app:layout_constraintEnd_toStartOf="@+id/IletisimBilgileri"
+                app:layout_constraintStart_toStartOf="@+id/IletisimBilgileri" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
