@@ -32,9 +32,11 @@ public class PickSeat extends AppCompatActivity {
     private Button button1;
     private String tarih;
     private String otobus;
+    private String nereden;
+    private String nereye;
 
-    private boolean tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18 = false;
-    private boolean[] tvler = {tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18};
+    private boolean tv0, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18 = false;
+    private boolean[] tvler = {tv0, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18};
 
 
 
@@ -50,6 +52,9 @@ public class PickSeat extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         otobus = extras.getString("otobus");
         tarih = extras.getString("tarih");
+        nereden = extras.getString("nereden");
+        nereye = extras.getString("nereye");
+
 
     }
     public void tanimla(){
@@ -73,36 +78,33 @@ public class PickSeat extends AppCompatActivity {
         textView18 = (TextView) findViewById(R.id.textView18);
         button1 = (Button) findViewById(R.id.button);
     }
-    public void pickSeatListener(TextView textView, boolean tiklandimi){
-        if(tiklandimi) {
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+    public void pickSeatListener(TextView textView, boolean tiklandimi) {
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(tiklandimi);
+                if (tiklandimi) {
                     textView.setBackgroundColor(Color.argb(100, 106, 106, 106));
                     int a = Integer.parseInt(String.valueOf(textView.getText()));
                     for (int i = 0; i < tvler.length; i++) {
-                        if (a == i+1) {
+                        if (a == i) {
                             tvler[i] = false;
+                            System.out.println("truemış: " + tvler[i]);
                         }
                     }
                 }
-            });
-        }
-        else {
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                else {
                     textView.setBackgroundColor(Color.argb(255, 39, 149, 44));
                     int a = Integer.parseInt(String.valueOf(textView.getText()));
                     for (int i = 0; i < tvler.length; i++) {
-                        if (a == i+1) {
+                        if (a == i) {
                             tvler[i] = true;
+                            System.out.println("falsemış: " + tvler[i]);
                         }
                     }
-
                 }
-            });
-        }
+            }
+        });
     }
     public void pickSeater(){
         pickSeatListener(textView1, tv1);
@@ -133,6 +135,8 @@ public class PickSeat extends AppCompatActivity {
                 Intent i = new Intent(PickSeat.this, PaymentWindow.class);
                 i.putExtra("tarih", tarih);
                 i.putExtra("otobus", otobus);
+                i.putExtra("nereden", nereden);
+                i.putExtra("nereye", nereye);
                 startActivity(i);
             }
         });

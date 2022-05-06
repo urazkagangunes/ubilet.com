@@ -7,64 +7,128 @@
     tools:context=".paymentAndTicketInfo">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/otobusBileti"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="68dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/adSoyad"
+        app:layout_constraintEnd_toEndOf="@+id/nereye"
+        app:layout_constraintStart_toStartOf="@+id/nereden"
+        app:layout_constraintTop_toBottomOf="@+id/ok" />
+
+    <TextView
+        android:id="@+id/ok"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_horizontal|top"
+        android:text="➵"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/otobusBileti"
+        app:layout_constraintEnd_toStartOf="@+id/nereye"
+        app:layout_constraintStart_toEndOf="@+id/nereden"
+        app:layout_constraintTop_toBottomOf="@+id/nereye" />
+
+    <TextView
+        android:id="@+id/nereden"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="29dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/ok"
+        app:layout_constraintEnd_toStartOf="@+id/ok"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ok" />
+
+    <TextView
+        android:id="@+id/nereye"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="54dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/ok"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ok"
+        app:layout_constraintTop_toBottomOf="@+id/marka" />
+
+    <TextView
+        android:id="@+id/marka"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="22dp"
+        android:text="ubilet.com"
+        android:textColor="#FBFBFB"
+        app:layout_constraintBottom_toTopOf="@+id/nereye"
+        app:layout_constraintEnd_toEndOf="@+id/nereden"
+        app:layout_constraintStart_toStartOf="@+id/baslik3"
+        app:layout_constraintTop_toBottomOf="@+id/baslik3" />
+
+    <TextView
+        android:id="@+id/adSoyad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="117dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otobusBileti" />
+
+    <TextView
+        android:id="@+id/baslik2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="42dp"
+        android:text="Otobüs Kalkış Tarihi"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/Tarih"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baslik" />
+
+    <TextView
+        android:id="@+id/baslik3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="9dp"
+        android:text="Biletiniz"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/marka"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tarih" />
+
+    <TextView
+        android:id="@+id/Tarih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="64dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/baslik3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baslik2" />
+
+    <TextView
+        android:id="@+id/baslik"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
         android:background="#8DCD44"
         android:gravity="center"
         android:text="Ödemeniz Başarıyla Gerçekleşmiştir."
         android:textColor="#F8F4F4"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView19"
+        app:layout_constraintBottom_toTopOf="@+id/baslik2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="37dp"
-        android:text="Otobüs Kalkış Tarihi"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="86dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView21"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="62dp"
-        android:text="Biletiniz"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginBottom="316dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 </android.support.constraint.ConstraintLayout>

@@ -1,11 +1,15 @@
 package com.example.otobilet;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +21,11 @@ public class PaymentWindow extends AppCompatActivity {
     private EditText emailAddress, personName, kimlikNumarasi,inputCardInfo, editTextDate, cvc, editTextPhone;
     private Button button3;
     private String tarih;
+    private String nereden;
+    private String nereye;
+    private String otobus;
+    private String name;
+    private String kimlikno;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +35,10 @@ public class PaymentWindow extends AppCompatActivity {
         onClickBtn();
         Bundle extras = getIntent().getExtras();
         tarih = extras.getString("tarih");
-        bilgiAl.setText(extras.getString("otobus") + "\n" + tarih);
+        nereden = extras.getString("nereden");
+        nereye = extras.getString("nereye");
+        otobus = extras.getString("otobus");
+        bilgiAl.setText(otobus + "\n" + tarih);
     }
     public void tanimla(){
         bilgiAl = (TextView) findViewById(R.id.bilgiAl);
@@ -49,11 +61,40 @@ public class PaymentWindow extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tcyial();
+
                 Intent i = new Intent(PaymentWindow.this,paymentAndTicketInfo.class);
                 i.putExtra("tarih", tarih);
+                i.putExtra("nereden", nereden);
+                i.putExtra("nereye", nereye);
+                i.putExtra("otobus", otobus);
                 startActivity(i);
             }
         });
+    }
+
+    public void tcyial() {
+
+        try {
+            kimlikno = kimlikNumarasi.getText().toString();
+            name = personName.getText().toString();
+            SQLiteDatabase database = this.openOrCreateDatabase("ubilet.com", MODE_PRIVATE, null);
+            database.execSQL("CREATE TABLE IF NOT EXISTS persons (id INTEGER PRIMARY KEY, name VARCHAR, tc VARCHAR)");
+
+            String executable = "INSERT INTO persons (name, tc) VALUES ('" + name + "', '" + kimlikno + "')";
+            System.out.println(executable);
+            database.execSQL(executable);
+
+            Cursor cursor = database.rawQuery("SELECT * FROM persons", null);
+            int nameIx = cursor.getColumnIndex("name");
+            int idIx = cursor.getColumnIndex("id");
+            while(cursor.moveToNext()){
+                System.out.println(cursor.getString(nameIx));
+                System.out.println(cursor.getString(idIx));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void changeTitle() {

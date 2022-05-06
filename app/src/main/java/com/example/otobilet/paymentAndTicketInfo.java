@@ -10,12 +10,17 @@ import android.widget.TextView;
 public class paymentAndTicketInfo extends AppCompatActivity {
     private String tarih;
     private TextView textView;
-    private TextView textView19;
-    private TextView textView20;
-    private TextView textView21;
-    private TextView textView22;
-
-
+    private TextView baslik2;
+    private TextView tarihText;
+    private TextView baslik3;
+    private TextView ok;
+    private String nereden;
+    private String nereye;
+    private TextView neredenText;
+    private TextView nereyeText;
+    private TextView marka;
+    private String otobus;
+    private TextView otobusBileti;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,15 +29,33 @@ public class paymentAndTicketInfo extends AppCompatActivity {
         tanimla();
         Bundle extras = getIntent().getExtras();
         tarih = extras.getString("tarih");
-        textView20.setText(tarih);
+        nereden = extras.getString("nereden");
+        nereye = extras.getString("nereye");
+        otobus = extras.getString("otobus");
+
+        bilgileriAl();
+
 
     }
     public void tanimla(){
-        textView = (TextView) findViewById(R.id.textView);
-        textView19 = (TextView) findViewById(R.id.textView19);
-        textView20 = (TextView) findViewById(R.id.textView20);
-        textView21 = (TextView) findViewById(R.id.textView21);
-        textView22 = (TextView) findViewById(R.id.textView22);
+        textView = (TextView) findViewById(R.id.baslik);
+        baslik2 = (TextView) findViewById(R.id.baslik2);
+        tarihText = (TextView) findViewById(R.id.Tarih);
+        baslik3 = (TextView) findViewById(R.id.baslik3);
+        ok = (TextView) findViewById(R.id.ok);
+        neredenText = (TextView) findViewById(R.id.nereden);
+        nereyeText = (TextView) findViewById(R.id.nereye);
+        marka = (TextView) findViewById(R.id.marka);
+        marka.setBackgroundColor(Color.RED);
+        otobusBileti = (TextView) findViewById(R.id.otobusBileti);
+
+    }
+
+    public void bilgileriAl(){
+        tarihText.setText(tarih);
+        neredenText.setText(nereden);
+        nereyeText.setText(nereye);
+        otobusBileti.setText(otobus);
     }
 
     public void changeTitle() {
