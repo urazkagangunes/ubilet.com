@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     Spinner spinner1;
     Spinner spinner2;
+    Button biletlerimBtn;
    // TextView textView23;
     ArrayList<String> iller;
     ArrayAdapter arrayAdapter;
@@ -156,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
         spinner2 = (Spinner) findViewById(R.id.spinner2);
         selectDate = (TextView) findViewById(R.id.selectDate);
         button = (Button) findViewById(R.id.button1);
+        biletlerimBtn = (Button) findViewById(R.id.biletlerimBtn);
+
       //  textView23 = (TextView) findViewById(R.id.textView23);
 
     }
@@ -195,11 +198,22 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, OtobusListele.class);
                 i.putExtra("tarih", selectDate.getText());
                 i.putExtra("nereden", nereden);
-                i.putExtra("nereye ", nereye);
+                i.putExtra("nereye", nereye);
                 startActivity(i);
             }
         });
+
+
+        biletlerimBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, BiletlerimGiris.class);
+                startActivity(i);
+            }
+        });
+
     }
+
 
     public void changeTitle() {
         MainActivity.this.setTitle("ubilet.com");

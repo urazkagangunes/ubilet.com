@@ -35,7 +35,6 @@ public class OtobusListele extends AppCompatActivity {
         nereden = extras.getString("nereden");
         nereye = extras.getString("nereye");
 
-
         textViewListener(textView1);
         textViewListener(textView2);
         textViewListener(textView3);

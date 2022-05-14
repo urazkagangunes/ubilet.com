@@ -7,7 +7,6 @@
     tools:context=".MainActivity">
 
 
-
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="0dp"
@@ -50,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:background="#27952C"
+        android:background="#2DD134"
         android:text="Otobüs Bileti Bul"
         android:textColor="#FBF8F8"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,6 +58,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectDate"
         app:layout_constraintVertical_bias="0.031" />
+
+    <Button
+        android:id="@+id/biletlerimBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:background="#F84458"
+        android:text="BİLETLERİM"
+        android:textColor="#FBF9F9"
+        app:layout_constraintStart_toStartOf="@+id/button1"
+        app:layout_constraintTop_toBottomOf="@+id/button1" />
 
 
 </android.support.constraint.ConstraintLayout>

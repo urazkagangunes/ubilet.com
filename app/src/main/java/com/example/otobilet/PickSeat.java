@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class PickSeat extends AppCompatActivity {
     private TextView textView1;
     private TextView textView2;
@@ -34,20 +38,16 @@ public class PickSeat extends AppCompatActivity {
     private String otobus;
     private String nereden;
     private String nereye;
-
-    private boolean tv0, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18 = false;
-    private boolean[] tvler = {tv0, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18};
-
-
+    private List<String> koltuklar = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_seat);
         tanimla();
-        pickSeater();
         btnOnClick();
         changeTitle();
+        onClickTanimla();
 
         Bundle extras = getIntent().getExtras();
         otobus = extras.getString("otobus");
@@ -78,56 +78,77 @@ public class PickSeat extends AppCompatActivity {
         textView18 = (TextView) findViewById(R.id.textView18);
         button1 = (Button) findViewById(R.id.button);
     }
-    public void pickSeatListener(TextView textView, boolean tiklandimi) {
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println(tiklandimi);
-                if (tiklandimi) {
-                    textView.setBackgroundColor(Color.argb(100, 106, 106, 106));
-                    int a = Integer.parseInt(String.valueOf(textView.getText()));
-                    for (int i = 0; i < tvler.length; i++) {
-                        if (a == i) {
-                            tvler[i] = false;
-                            System.out.println("truemış: " + tvler[i]);
-                        }
+
+    public void onClickTanimla() {
+        koltukonClick(textView1);
+        koltukonClick(textView2);
+        koltukonClick(textView3);
+        koltukonClick(textView4);
+        koltukonClick(textView5);
+        koltukonClick(textView6);
+        koltukonClick(textView7);
+        koltukonClick(textView8);
+        koltukonClick(textView9);
+        koltukonClick(textView10);
+        koltukonClick(textView11);
+        koltukonClick(textView12);
+        koltukonClick(textView13);
+        koltukonClick(textView14);
+        koltukonClick(textView15);
+        koltukonClick(textView16);
+        koltukonClick(textView17);
+        koltukonClick(textView18);
+    }
+    public void koltukonClick(TextView v) {
+
+        switch (v.getId()){
+            case R.id.textView1:
+            case R.id.textView2:
+            case R.id.textView3:
+            case R.id.textView4:
+            case R.id.textView5:
+            case R.id.textView6:
+            case R.id.textView7:
+            case R.id.textView8:
+            case R.id.textView9:
+            case R.id.textView10:
+            case R.id.textView11:
+            case R.id.textView12:
+            case R.id.textView13:
+            case R.id.textView14:
+            case R.id.textView15:
+            case R.id.textView16:
+            case R.id.textView17:
+            case R.id.textView18:
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        yapilacak(v);
                     }
-                }
-                else {
-                    textView.setBackgroundColor(Color.argb(255, 39, 149, 44));
-                    int a = Integer.parseInt(String.valueOf(textView.getText()));
-                    for (int i = 0; i < tvler.length; i++) {
-                        if (a == i) {
-                            tvler[i] = true;
-                            System.out.println("falsemış: " + tvler[i]);
-                        }
-                    }
+                });
+                break;
+        }
+    }
+
+    public void yapilacak(TextView v) {
+        ColorDrawable buttonColor = (ColorDrawable) v.getBackground();
+        int color = buttonColor.getColor();
+        if (color == Color.argb(255, 39, 149, 44)){
+            v.setBackgroundColor(Color.argb(255, 243, 90, 90));
+            for (int i = 0; i < koltuklar.size(); i++) {
+                if (koltuklar.get(i).equals(v.getText().toString())) {
+                    koltuklar.remove(i);
                 }
             }
-        });
-    }
-    public void pickSeater(){
-        pickSeatListener(textView1, tv1);
-        pickSeatListener(textView2, tv2);
-        pickSeatListener(textView3, tv3);
-        pickSeatListener(textView4, tv4);
-        pickSeatListener(textView5, tv5);
-        pickSeatListener(textView6, tv6);
-        pickSeatListener(textView7, tv7);
-        pickSeatListener(textView8, tv8);
-        pickSeatListener(textView9, tv9);
-        pickSeatListener(textView10, tv10);
-        pickSeatListener(textView11, tv11);
-        pickSeatListener(textView12, tv12);
-        pickSeatListener(textView13, tv13);
-        pickSeatListener(textView14, tv14);
-        pickSeatListener(textView15, tv15);
-        pickSeatListener(textView16, tv16);
-        pickSeatListener(textView17, tv17);
-        pickSeatListener(textView18, tv18);
+        }
+        else {
+            v.setBackgroundColor(Color.argb(255, 39, 149, 44));
+            String koltuk = v.getText().toString();
 
-
+            koltuklar.add(koltuk);
+        }
     }
+
     public void btnOnClick(){
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +158,7 @@ public class PickSeat extends AppCompatActivity {
                 i.putExtra("otobus", otobus);
                 i.putExtra("nereden", nereden);
                 i.putExtra("nereye", nereye);
+                i.putExtra("koltuklar", (Serializable) koltuklar);
                 startActivity(i);
             }
         });

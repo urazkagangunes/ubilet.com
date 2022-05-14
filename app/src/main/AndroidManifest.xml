@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OtoBilet">
         <activity
+            android:name=".BiletListele"
+            android:exported="false" />
+        <activity
+            android:name=".BiletlerimGiris"
+            android:exported="false" />
+        <activity
             android:name=".paymentAndTicketInfo"
             android:exported="false" />
         <activity

@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PaymentWindow extends AppCompatActivity {
 
     private TextView bilgiAl, iletisimBilgileri, yolcuBilgileri, kartBilgileri, kartNumarasi, cartSdk, cvcInfo;
@@ -24,8 +27,13 @@ public class PaymentWindow extends AppCompatActivity {
     private String nereden;
     private String nereye;
     private String otobus;
+
     private String name;
     private String kimlikno;
+    private String bilet;
+    private String koltukNo;
+    private List<String> koltuklar = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,7 @@ public class PaymentWindow extends AppCompatActivity {
         nereden = extras.getString("nereden");
         nereye = extras.getString("nereye");
         otobus = extras.getString("otobus");
+        koltuklar = extras.getStringArrayList("koltuklar");
         bilgiAl.setText(otobus + "\n" + tarih);
     }
     public void tanimla(){
@@ -61,18 +70,40 @@ public class PaymentWindow extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tcyial();
-
                 Intent i = new Intent(PaymentWindow.this,paymentAndTicketInfo.class);
+                veriTabaninaEkle();
                 i.putExtra("tarih", tarih);
                 i.putExtra("nereden", nereden);
                 i.putExtra("nereye", nereye);
                 i.putExtra("otobus", otobus);
+                i.putExtra("name", name);
                 startActivity(i);
             }
         });
     }
 
+    public void veriTabaninaEkle() {
+        name = personName.getText().toString();
+        kimlikno = kimlikNumarasi.getText().toString();
+        bilet = otobus;
+        koltukNo = koltuklar.get(0);
+
+
+
+        Customer customer = new Customer(name, kimlikno, bilet, koltukNo);
+        DatabaseOperations db = new DatabaseOperations(getApplicationContext());
+        db.add(customer);
+    }
+
+    public void changeTitle() {
+        this.setTitle("ubilet.com");
+        ActionBar aBar;
+        aBar = getSupportActionBar();
+        ColorDrawable cd = new ColorDrawable(Color.RED);
+        aBar.setBackgroundDrawable(cd);
+    }
+
+    /*
     public void tcyial() {
 
         try {
@@ -93,16 +124,11 @@ public class PaymentWindow extends AppCompatActivity {
                 System.out.println(cursor.getString(idIx));
             }
         } catch (Exception e) {
+
             System.out.println(e);
         }
-    }
+    }*/
 
-    public void changeTitle() {
-        this.setTitle("ubilet.com");
-        ActionBar aBar;
-        aBar = getSupportActionBar();
-        ColorDrawable cd = new ColorDrawable(Color.RED);
-        aBar.setBackgroundDrawable(cd);
-    }
+
 
 }
